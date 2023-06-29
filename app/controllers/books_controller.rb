@@ -8,14 +8,12 @@ class BooksController < ApplicationController
     @booknew = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
+    @book_comment = Book.new
   end
 
   def index
     @booknew = Book.new
     @books = Book.all
-    @book = Book.find(@books.ids)
-    favorite = current_user.favorite.find(book_id: @books.ids)
-    
   end
 
   def create

@@ -1,9 +1,10 @@
 class Book < ApplicationRecord
   belongs_to :user
-  has_many :favorite, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
   
-  def favorite_by?(user)
-    favorite.exists?(user_id: user.id)
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
   
   validates :title, presence: true
